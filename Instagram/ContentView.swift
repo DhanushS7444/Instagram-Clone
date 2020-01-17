@@ -59,14 +59,16 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct Home : View {
+    @ObservedObject var observed = observer()
+    
     var body : some View {
         
         ScrollView(.vertical, showsIndicators: false) {
             VStack{
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
-                        ForEach(0..<5){_ in
-                            StatusCard(imName: "Dhanush")
+                        ForEach(observed.status){i in
+                            StatusCard(imName: i.name)
                                 .padding(.leading,10)
                         }
                     }
@@ -75,7 +77,7 @@ struct Home : View {
                     PostCard(user: "", image: "", id: "")
                 }
             }
-        }
+        }.animation(.spring())
     }
 }
 
@@ -132,4 +134,32 @@ struct PostCard : View {
             Text("View all 3 Comments")
         }).padding(8)
     }
+}
+
+
+class observer : ObservableObject{
+    @Published var status = [datatype]()
+    init() {
+        let db = Firestore.firestore()
+        db.collection("status").addSnapshotListener{(snap,err) in
+            if err != nil{
+                print((err?.localizedDescription)!)
+                return
+            }
+            for i in snap!.documentChanges{
+                if i.type == .added{
+                    let id = i.document.documentID
+                    let name = i.document.get("name") as! String
+                    let image = i.document.get("image") as! String
+                    self.status.append(datatype(id: id, name: name, image: image))
+                }
+            }
+        }
+    }
+}
+
+struct datatype : Identifiable{
+    var id : String
+    var name : String
+    var image : String
 }
