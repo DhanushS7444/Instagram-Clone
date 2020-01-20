@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		C10C547A23D079EC005205C1 /* InstagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10C547923D079EC005205C1 /* InstagramTests.swift */; };
 		C10C548523D079EC005205C1 /* InstagramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10C548423D079EC005205C1 /* InstagramUITests.swift */; };
 		C10C549323D07B0F005205C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C10C549223D07B0F005205C1 /* GoogleService-Info.plist */; };
+		C1CD9C2723D57D6F00215666 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C1CD9C2623D57D6F00215666 /* SDWebImageSwiftUI */; };
 		DF6DB287D78A455FED1617C6 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B66B5178D31FC074BD9A360B /* Pods_Instagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1CD9C2723D57D6F00215666 /* SDWebImageSwiftUI in Frameworks */,
 				DF6DB287D78A455FED1617C6 /* Pods_Instagram.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,7 +105,6 @@
 				FDEB38EED614ECE8BA091D6C /* Pods-InstagramUITests.debug.xcconfig */,
 				2FA064D2D96719CD1A7F2B3A /* Pods-InstagramUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -198,6 +199,9 @@
 			dependencies = (
 			);
 			name = Instagram;
+			packageProductDependencies = (
+				C1CD9C2623D57D6F00215666 /* SDWebImageSwiftUI */,
+			);
 			productName = Instagram;
 			productReference = C10C545F23D079D9005205C1 /* Instagram.app */;
 			productType = "com.apple.product-type.application";
@@ -272,6 +276,9 @@
 				Base,
 			);
 			mainGroup = C10C545623D079D9005205C1;
+			packageReferences = (
+				C1CD9C2523D57D6F00215666 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = C10C546023D079D9005205C1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -729,6 +736,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C1CD9C2523D57D6F00215666 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C1CD9C2623D57D6F00215666 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C1CD9C2523D57D6F00215666 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C10C545723D079D9005205C1 /* Project object */;
 }

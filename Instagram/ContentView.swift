@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Firebase
+import SDWebImageSwiftUI
 
 struct ContentView: View {
     var body: some View {
@@ -68,7 +69,7 @@ struct Home : View {
                 ScrollView(.horizontal, showsIndicators: false){
                     HStack{
                         ForEach(observed.status){i in
-                            StatusCard(imName: i.name)
+                            StatusCard(imName: i.image)
                                 .padding(.leading,10)
                         }
                     }
@@ -84,9 +85,9 @@ struct Home : View {
 struct StatusCard : View {
     var imName =  ""
     var body : some View{
-        Image(imName)
+        AnimatedImage(url: URL(string: imName))
             .resizable()
-            .frame(width: 60, height: 60)
+            .frame(width: 80, height: 80)
             .clipShape(Circle())
     }
 }
@@ -163,3 +164,4 @@ struct datatype : Identifiable{
     var name : String
     var image : String
 }
+
